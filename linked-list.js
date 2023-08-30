@@ -121,6 +121,10 @@ class LinkedList {
 
     /** setAt(idx, val): set val at idx to val */
     setAt(idx, val) {
+        if (!this.length) {
+            throw new Error("List is empty!");
+        }
+
         if (idx < 0 || idx >= this.length) {
             throw new Error("Invalid index!");
         }
@@ -128,9 +132,30 @@ class LinkedList {
 
     /** insertAt(idx, val): add node w/val before idx. */
     insertAt(idx, val) {
-        if (idx < 0 || idx >= this.length) {
+        if (idx < 0 || idx > this.length) {
             throw new Error("Invalid index!");
         }
+
+        if (idx === 0) return this.unshift(val);
+        if (idx === this.length) return this.push(val);
+
+        // Reach node at index before sought index
+        let currNode = this.head;
+        let currIdx = 0;
+        while (currIdx < idx - 1) {
+            currNode = currNode.next;
+            currIdx++;
+        }
+
+        const beforeIdx = currNode;
+        const atIdx = currNode.next;
+
+        // Insert node
+        const newNode = new Node(val);
+        beforeIdx.next = newNode;
+        newNode.next = atIdx;
+
+        this.length++;
     }
 
     /** removeAt(idx): return & remove item at idx, */
