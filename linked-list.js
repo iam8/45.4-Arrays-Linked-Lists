@@ -20,7 +20,6 @@ class LinkedList {
 
     /** push(val): add new value to end of list. */
     push(val) {
-
         const node = new Node(val);
         if (this.head === null) {
             this.head = node;
@@ -35,7 +34,6 @@ class LinkedList {
 
     /** unshift(val): add new value to start of list. */
     unshift(val) {
-
         const node = new Node(val);
         if (this.head === null) {
             this.head = node;
@@ -50,7 +48,6 @@ class LinkedList {
 
     /** pop(): return & remove last item. */
     pop() {
-
         if (!this.length) {
             throw new Error("List is empty - item cannot be removed!");
         }
@@ -124,7 +121,16 @@ class LinkedList {
 
     /** average(): return an average of all values in the list */
     average() {
+        if (!this.length) return 0;
 
+        let sum = 0;
+        let curr = this.head;
+        while (curr) {
+            sum += curr.val;
+            curr = curr.next;
+        }
+
+        return sum / this.length;
     }
 }
 
