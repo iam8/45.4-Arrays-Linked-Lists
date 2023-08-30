@@ -34,7 +34,16 @@ class LinkedList {
 
     /** unshift(val): add new value to start of list. */
     unshift(val) {
+        const node = new Node(val);
+        if (this.head === null) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            node.next = this.head;
+            this.head = node;
+        }
 
+        this.length++;
     }
 
     /** pop(): return & remove last item. */
