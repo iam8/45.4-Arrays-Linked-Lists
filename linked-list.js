@@ -178,7 +178,8 @@ class LinkedList {
             throw new Error("Invalid index!");
         }
 
-        if (this.length === 1 || idx === this.length - 1) return this.pop();
+        if (this.length === 1 || idx === 0) return this.shift();
+        if (idx === this.length - 1) return this.pop();
 
         // Reach node at index before sought index
         let currNode = this.head;
