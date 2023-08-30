@@ -170,9 +170,33 @@ class LinkedList {
 
     /** removeAt(idx): return & remove item at idx, */
     removeAt(idx) {
+        if (!this.length) {
+            throw new Error("List is empty!");
+        }
+
         if (idx < 0 || idx >= this.length) {
             throw new Error("Invalid index!");
         }
+
+        if (this.length === 1 || idx === this.length - 1) return this.pop();
+
+        // Reach node at index before sought index
+        let currNode = this.head;
+        let currIdx = 0;
+        while (currIdx < idx - 1) {
+            currNode = currNode.next;
+            currIdx++;
+        }
+
+        const beforeIdx = currNode;
+        const atIdx = currNode.next;
+
+        // 'Cut out' node at sought index
+        beforeIdx.next = atIdx.next;
+        atIdx.next = null;
+
+        this.length--;
+        return atIdx.val;
     }
 
     /** average(): return an average of all values in the list */
