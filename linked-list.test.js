@@ -60,6 +60,11 @@ describe("pop", function() {
     expect(lst.head).toBe(null);
     expect(lst.length).toBe(0);
   });
+
+  it("Throws an error if list is empty", () => {
+    let list = new LinkedList();
+    expect(() => list.pop()).toThrow();
+  });
 });
 
 describe("shift", function() {
@@ -75,6 +80,11 @@ describe("shift", function() {
     expect(lst.head).toBe(null);
     expect(lst.length).toBe(0);
   });
+
+  it("Throws an error if list is empty", () => {
+    let list = new LinkedList();
+    expect(() => list.shift()).toThrow();
+  });
 });
 
 describe("getAt", function() {
@@ -83,6 +93,18 @@ describe("getAt", function() {
 
     expect(lst.getAt(0)).toBe(5);
     expect(lst.getAt(1)).toBe(10);
+  });
+
+  it("Throws an error if list is empty", () => {
+    let list = new LinkedList();
+    expect(() => list.getAt(0)).toThrow();
+  });
+
+  it("Throws an error if index is invalid", () => {
+    let list = new LinkedList([2, 4, 6, 8]);
+
+    expect(() => list.getAt(-1)).toThrow();
+    expect(() => list.getAt(4)).toThrow();
   });
 });
 
@@ -94,6 +116,18 @@ describe("setAt", function() {
     expect(lst.setAt(1, 2));
     expect(lst.head.val).toBe(1);
     expect(lst.head.next.val).toBe(2);
+  });
+
+  it("Throws an error if list is empty", () => {
+    let list = new LinkedList();
+    expect(() => list.setAt(0)).toThrow();
+  });
+
+  it("Throws an error if index is invalid", () => {
+    let list = new LinkedList([2, 4, 6, 8]);
+
+    expect(() => list.setAt(-1, 22)).toThrow();
+    expect(() => list.setAt(4, 22)).toThrow();
   });
 });
 
@@ -112,6 +146,10 @@ describe("insertAt", function() {
     lst.insertAt(5, 25);
     expect(lst.head.next.next.next.next.next.val).toBe(25);
     expect(lst.tail.val).toBe(25);
+
+    lst.insertAt(0, 99);
+    expect(lst.head.val).toEqual(99);
+    expect(lst.head.next.val).toEqual(5);
   });
 
   it("inserts into empty list", function() {
@@ -121,6 +159,13 @@ describe("insertAt", function() {
     expect(lst.length).toBe(1);
     expect(lst.head.val).toBe(5);
     expect(lst.tail.val).toBe(5);
+  });
+
+  it("Throws an error if index is invalid", () => {
+    let list = new LinkedList([2, 4, 6, 8]);
+
+    expect(() => list.insertAt(-1, 22)).toThrow();
+    expect(() => list.insertAt(5, 22)).toThrow();
   });
 });
 
@@ -132,6 +177,47 @@ describe("removeAt", function() {
     expect(lst.length).toBe(0);
     expect(lst.head).toBe(null);
     expect(lst.tail).toBe(null);
+  });
+
+  it("Removes from middle of list", () => {
+    let list = new LinkedList([2, 4, 6, 8]);
+
+    list.removeAt(2);
+    expect(list.length).toEqual(3);
+    expect(list.head.val).toEqual(2);
+    expect(list.head.next.val).toEqual(4);
+    expect(list.head.next.next.val).toEqual(8);
+    expect(list.tail.val).toEqual(8);
+  })
+
+  it("Removes from beginning of list", () => {
+    let list = new LinkedList([2, 4, 6, 8]);
+
+    list.removeAt(0);
+    expect(list.length).toEqual(3);
+    expect(list.head.val).toEqual(4);
+    expect(list.tail.val).toEqual(8);
+  })
+
+  it("Removes from end of list", () => {
+    let list = new LinkedList([2, 4, 6, 8]);
+
+    list.removeAt(3);
+    expect(list.length).toEqual(3);
+    expect(list.head.val).toEqual(2);
+    expect(list.tail.val).toEqual(6);
+  })
+
+  it("Throws an error if list is empty", () => {
+    let list = new LinkedList();
+    expect(() => list.removeAt(0)).toThrow();
+  });
+
+  it("Throws an error if index is invalid", () => {
+    let list = new LinkedList([2, 4, 6, 8]);
+
+    expect(() => list.removeAt(-1)).toThrow();
+    expect(() => list.removeAt(4)).toThrow();
   });
 });
 
