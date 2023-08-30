@@ -1,76 +1,68 @@
-/** Node: node for a singly linked list. */
 
+/** Node: node for a singly linked list. */
 class Node {
-  constructor(val) {
-    this.val = val;
-    this.next = null;
-  }
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+    }
 }
+
 
 /** LinkedList: chained together nodes. */
-
 class LinkedList {
-  constructor(vals = []) {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
+    constructor(vals = []) {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
 
-    for (let val of vals) this.push(val);
-  }
+        for (let val of vals) this.push(val);
+    }
 
-  /** push(val): add new value to end of list. */
+    /** push(val): add new value to end of list. */
+    push(val) {
 
-  push(val) {
+    }
 
-  }
+    /** unshift(val): add new value to start of list. */
+    unshift(val) {
 
-  /** unshift(val): add new value to start of list. */
+    }
 
-  unshift(val) {
+    /** pop(): return & remove last item. */
+    pop() {
 
-  }
+    }
 
-  /** pop(): return & remove last item. */
+    /** shift(): return & remove first item. */
+    shift() {
 
-  pop() {
+    }
 
-  }
+    /** getAt(idx): get val at idx. */
+    getAt(idx) {
 
-  /** shift(): return & remove first item. */
+    }
 
-  shift() {
+    /** setAt(idx, val): set val at idx to val */
+    setAt(idx, val) {
 
-  }
+    }
 
-  /** getAt(idx): get val at idx. */
+    /** insertAt(idx, val): add node w/val before idx. */
+    insertAt(idx, val) {
 
-  getAt(idx) {
+    }
 
-  }
+    /** removeAt(idx): return & remove item at idx, */
+    removeAt(idx) {
 
-  /** setAt(idx, val): set val at idx to val */
+    }
 
-  setAt(idx, val) {
+    /** average(): return an average of all values in the list */
+    average() {
 
-  }
-
-  /** insertAt(idx, val): add node w/val before idx. */
-
-  insertAt(idx, val) {
-
-  }
-
-  /** removeAt(idx): return & remove item at idx, */
-
-  removeAt(idx) {
-
-  }
-
-  /** average(): return an average of all values in the list */
-
-  average() {
-    
-  }
+    }
 }
+
 
 module.exports = LinkedList;
