@@ -101,22 +101,43 @@ class LinkedList {
 
     /** getAt(idx): get val at idx. */
     getAt(idx) {
+        if (!this.length) {
+            throw new Error("List is empty!");
+        }
 
+        if (idx < 0 || idx >= this.length) {
+            throw new Error("Invalid index!");
+        }
+
+        let currNode = this.head;
+        let currIdx = 0;
+        while (currIdx < idx) {
+            currNode = currNode.next;
+            currIdx++;
+        }
+
+        return currNode.val;
     }
 
     /** setAt(idx, val): set val at idx to val */
     setAt(idx, val) {
-
+        if (idx < 0 || idx >= this.length) {
+            throw new Error("Invalid index!");
+        }
     }
 
     /** insertAt(idx, val): add node w/val before idx. */
     insertAt(idx, val) {
-
+        if (idx < 0 || idx >= this.length) {
+            throw new Error("Invalid index!");
+        }
     }
 
     /** removeAt(idx): return & remove item at idx, */
     removeAt(idx) {
-
+        if (idx < 0 || idx >= this.length) {
+            throw new Error("Invalid index!");
+        }
     }
 
     /** average(): return an average of all values in the list */
