@@ -128,6 +128,16 @@ class LinkedList {
         if (idx < 0 || idx >= this.length) {
             throw new Error("Invalid index!");
         }
+
+        // Reach node at the sought index
+        let currNode = this.head;
+        let currIdx = 0;
+        while (currIdx < idx) {
+            currNode = currNode.next;
+            currIdx++;
+        }
+
+        currNode.val = val;
     }
 
     /** insertAt(idx, val): add node w/val before idx. */
