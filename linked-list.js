@@ -81,7 +81,25 @@ class LinkedList {
 
     /** shift(): return & remove first item. */
     shift() {
+        if (!this.length) {
+            throw new Error("List is empty - item cannot be removed!");
+        }
 
+        // Special case of list length 1
+        if (this.length === 1) {
+            const head = this.head;
+            this.head = null;
+            this.tail = null;
+            this.length = 0;
+            return head.val;
+        }
+
+        const oldHead = this.head;
+        this.head = oldHead.next;
+        oldHead.next = null;
+        this.length--;
+
+        return oldHead.val;
     }
 
     /** getAt(idx): get val at idx. */
